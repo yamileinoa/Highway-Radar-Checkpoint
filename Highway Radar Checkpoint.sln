@@ -1,67 +1,67 @@
-Option Strict On
-Public Class form1
-    Private Sub btnEnterSpeed_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnterSpeed.Click
- 
-        'Declare and initialize variables
-        Dim strVehicleSpeed As String
-        Dim decVehicleSpeed As Decimal
-        Dim decAverageSpeed As Decimal
-        Dim dectotalOfAllSpeed As Decimal = 0D
-        Dim strInputMessage As String = "Enter the speed for Vehicle"
-        Dim strInputHeading As String = "Radar Speed"
-        Dim strNormalMessage As String = "Enter the speed for Vehicle"
-        Dim strNonNumericError As String = "Error - Enter a number for the speed of vehicle"
-        Dim strNegativeError As String = "Error - Enter a positive number for vehicle"
- 
-        'Declare and initilize loop variables
-        Dim strCancelClicked As String = ""
-        Dim intMaxNumberEntries As Integer = 10
-        Dim intNumberOfEntries As Integer = 1
-        strVehicleSpeed = InputBox(strInputMessage & intNumberOfEntries, strInputHeading, "")
-        Do Until intNumberOfEntries > intMaxNumberEntries Or strVehicleSpeed = strCancelClicked
-            If IsNumeric(strVehicleSpeed) Then
-                decVehicleSpeed = Convert.ToDecimal(strVehicleSpeed)
-                If decVehicleSpeed > 0 Then
-                    Me.stRadarSpeed.Items.Add(decVehicleSpeed)
-                    dectotalOfAllSpeed += decVehicleSpeed
-                    intNumberOfEntries += 1
-                    strInputMessage = strNormalMessage
-                Else
-                    strInputMessage = strNegativeError
-                End If
-            Else
-                strInputMessage = strNonNumericError
-            End If
-            If intMaxNumberEntries <= intMaxNumberEntries Then
-                strVehicleSpeed = InputBox(strInputMessage & intNumberOfEntries, strInputHeading, "")
-            End If
-        Loop
- 
-        'Makes label visible
-        Me.lblAverageSpeed.Visible = True
- 
-        'Calculate and display average speed
-        If intNumberOfEntries > 1 Then
-            decAverageSpeed = dectotalOfAllSpeed / (intNumberOfEntries - 1)
-            Me.lblAverageSpeed.Text = "Average speed at checkpoint is " & decAverageSpeed.ToString("F1") & " mph"
-        Else
-            Me.lblAverageSpeed.Text = "No speed entered"
-        End If
- 
-        'Disable the Enter speed button
-        Me.btnEnterSpeed.Enabled = False
-    End Sub
- 
-    'Clear Button
-    Private Sub mnuClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuClear.Click
-        Me.stRadarSpeed.Items.Clear()
-        Me.lblAverageSpeed.Visible = False
-        Me.btnEnterSpeed.Enabled = True
-    End Sub
- 
-    'Exit Menu Button
-    Private Sub mnuExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuExit.Click
-        Me.Close()
- 
-    End Sub
-End Class
+Option Strict On
+Public Class form1
+    Private Sub btnEnterSpeed_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnterSpeed.Click
+
+        'Declare and initialize variables
+        Dim strVehicleSpeed As String
+        Dim decVehicleSpeed As Decimal
+        Dim decAverageSpeed As Decimal
+        Dim dectotalOfAllSpeed As Decimal = 0D
+        Dim strInputMessage As String = "Enter the speed for Vehicle"
+        Dim strInputHeading As String = "Radar Speed"
+        Dim strNormalMessage As String = "Enter the speed for Vehicle"
+        Dim strNonNumericError As String = "Error - Enter a number for the speed of vehicle"
+        Dim strNegativeError As String = "Error - Enter a positive number for vehicle"
+
+        'Declare and initilize loop variables
+        Dim strCancelClicked As String = ""
+        Dim intMaxNumberEntries As Integer = 10
+        Dim intNumberOfEntries As Integer = 1
+        strVehicleSpeed = InputBox(strInputMessage & intNumberOfEntries, strInputHeading, "")
+        Do Until intNumberOfEntries > intMaxNumberEntries Or strVehicleSpeed = strCancelClicked
+            If IsNumeric(strVehicleSpeed) Then
+                decVehicleSpeed = Convert.ToDecimal(strVehicleSpeed)
+                If decVehicleSpeed > 0 Then
+                    Me.stRadarSpeed.Items.Add(decVehicleSpeed)
+                    dectotalOfAllSpeed += decVehicleSpeed
+                    intNumberOfEntries += 1
+                    strInputMessage = strNormalMessage
+                Else
+                    strInputMessage = strNegativeError
+                End If
+            Else
+                strInputMessage = strNonNumericError
+            End If
+            If intMaxNumberEntries <= intMaxNumberEntries Then
+                strVehicleSpeed = InputBox(strInputMessage & intNumberOfEntries, strInputHeading, "")
+            End If
+        Loop
+
+        'Makes label visible
+        Me.lblAverageSpeed.Visible = True
+
+        'Calculate and display average speed
+        If intNumberOfEntries > 1 Then
+            decAverageSpeed = dectotalOfAllSpeed / (intNumberOfEntries - 1)
+            Me.lblAverageSpeed.Text = "Average speed at checkpoint is " & decAverageSpeed.ToString("F1") & " mph"
+        Else
+            Me.lblAverageSpeed.Text = "No speed entered"
+        End If
+
+        'Disable the Enter speed button
+        Me.btnEnterSpeed.Enabled = False
+    End Sub
+
+    'Clear Button
+    Private Sub mnuClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuClear.Click
+        Me.stRadarSpeed.Items.Clear()
+        Me.lblAverageSpeed.Visible = False
+        Me.btnEnterSpeed.Enabled = True
+    End Sub
+
+    'Exit Menu Button
+    Private Sub mnuExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuExit.Click
+        Me.Close()
+
+    End Sub
+End Class
